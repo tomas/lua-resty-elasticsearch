@@ -17,7 +17,7 @@ local deal_params = es_utils.deal_params
 
 
 local _M = {
-    _VERSION = '0.01'
+    _VERSION = '0.03'
 }
 
 
