@@ -57,8 +57,10 @@ function _M._perform_request(self, http_method, url, params, body)
         url = url .. ngx.encode_args(params)
     end
 
+    local headers = {}
     if body then
         body = cjson.encode(body)
+        headers['Content-Type'] = 'application/json'
     else
         body = ''
     end
@@ -69,7 +71,8 @@ function _M._perform_request(self, http_method, url, params, body)
     local res, err = http_c:request({
         path = url,
         method = http_method,
-        body = body
+        body = body,
+        headers = headers
     })
 
     if not res then
